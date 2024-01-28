@@ -55,6 +55,7 @@ app.get("/movies", async (req, res) => {
     const searchParameters = {
       q: req.query.q,
       query_by: "Movie Name",
+      per_page: 200
     };
     const searchResults = await client.collections("movies").documents().search(searchParameters);
     res.json(searchResults);
