@@ -56,13 +56,6 @@ app.get("/movies", async (req, res) => {
       q: req.query.q,
       query_by: "Movie Name",
     };
-    const collections = await client.collections("movies").retrieve();
-    console.log(collections);
-    // fetch all documents
-
-    const documents = await client.collections("movies").documents().search(searchParameters);
-    console.log(documents);
-
     const searchResults = await client.collections("movies").documents().search(searchParameters);
     res.json(searchResults);
   } catch (error) {
