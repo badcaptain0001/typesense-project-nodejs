@@ -2,10 +2,12 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const client = require("./typesense/client");
 const csvtojson = require("csvtojson");
+const cors = require("cors");
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 require("./db");
+app.use(cors({ credentials: true, origin: "*" }));
 
 const server = app.listen("8989", () => {
   console.log(`listening on port ${"8989"}!`);
